@@ -9,116 +9,171 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: #f0f4ff;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #f0f4ff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-    /* Full-width Header */
-    .header {
-      width: 100%;
-      background: linear-gradient(135deg, #0038A8, #007bff);
-      padding: 28px 15px;
-      color: white;
-      text-align: center;
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: .4px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.15);
-    }
+/* HEADER */
+.header {
+  width: 100%;
+  background: linear-gradient(135deg, #0038A8, #007bff);
+  padding: 28px 15px;
+  color: white;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: .4px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+}
 
-    /* Wider certificate box */
-    .container {
-      width: 90%;
-      max-width: 900px;
-      margin: 40px auto;
-      background: white;
-      padding: 40px;
-      border-radius: 20px;
-      border-top: 6px solid #005DFF;
-      box-shadow: 0 8px 35px rgba(0,0,0,0.10);
-      animation: fadeIn .4s ease;
-      flex-grow: 1;
-    }
+/* CARD */
+.container {
+  width: 95%;
+  max-width: 900px;
+  margin: 35px auto;
+  background: white;
+  padding: 40px;
+  border-radius: 18px;
+  border-top: 6px solid #005DFF;
+  box-shadow: 0 8px 35px rgba(0,0,0,0.10);
+  animation: fadeIn .4s ease;
+  flex-grow: 1;
+  text-align: center;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+/* VERIFIED BADGE */
+.badge {
+  width: 110px;
+  height: 110px;
+  background: #28a745;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px;
+  color: white;
+  font-size: 50px;
+  animation: popUp .6s ease forwards;
+  transform: scale(0);
+}
+@keyframes popUp {
+  0% { transform: scale(0.2); opacity: 0; }
+  70% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.badge-glow {
+  animation: glowPulse 1.8s infinite ease-in-out;
+}
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 8px rgba(40,167,69,0.6); }
+  50% { box-shadow: 0 0 22px rgba(40,167,69,1); }
+  100% { box-shadow: 0 0 8px rgba(40,167,69,0.6); }
+}
 
-    .title {
-      text-align: center;
-      font-size: 24px;
-      font-weight: 600;
-      color: #0038A8;
-      margin-bottom: 32px;
-    }
+/* INFO BLOCKS */
+.details-label {
+  font-size: 22px;
+  margin: 15px 0;
+  font-weight: 600;
+  color: #0038A8;
+}
+.details-text {
+  font-size: 19px;
+  font-weight: 400;
+  color: #222;
+  margin-bottom: 28px;
+}
 
-    .field {
-      background: #eef4ff;
-      padding: 16px;
-      border-radius: 12px;
-      margin: 16px 0;
-      border-left: 5px solid #005DFF;
-      font-size: 18px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+/* LONG CERTIFICATE MESSAGE */
+.description {
+  text-align: left;
+  font-size: 17px;
+  line-height: 28px;
+  margin-top: 35px;
+  color: #333;
+}
 
-    .label {
-      font-weight: 600;
-      color: #0038A8;
-    }
-
-    /* Footer */
-    .footer {
-      width: 100%;
-      text-align: center;
-      background: #0038A8;
-      color: white;
-      padding: 18px;
-      font-size: 14px;
-      margin-top: auto;
-    }
-  </style>
+/* FOOTER */
+.footer {
+  width: 100%;
+  text-align: center;
+  background: #0038A8;
+  color: white;
+  padding: 18px;
+  font-size: 14px;
+  margin-top: auto;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="header">
-    Knacktech Certificate Verification Portal
+<!-- HEADER -->
+<div class="header">
+  Knacktech Certificate Verification Portal
+</div>
+
+<div class="container">
+
+  <!-- Verified Badge -->
+  <div class="badge badge-glow">
+    <i class="fa-solid fa-check"></i>
   </div>
 
-  <div class="container">
-    <div class="title">
-      <i class="fa-solid fa-circle-check" style="color:#28a745;"></i> Certificate Verified Successfully
-    </div>
+  <h2 style="color:#0038A8; font-weight:600;">Certificate Successfully Verified</h2>
+  <p style="font-size:18px; color:#28a745; font-weight:500;">This credential is valid and issued officially.</p>
 
-    <div class="field"><span class="label">Name:</span> <span id="name"></span></div>
-    <div class="field"><span class="label">Domain:</span> <span id="domain"></span></div>
-    <div class="field"><span class="label">Start Date:</span> <span id="start"></span></div>
-    <div class="field"><span class="label">End Date:</span> <span id="end"></span></div>
-    <div class="field"><span class="label">Certificate ID:</span> <span id="cert"></span></div>
+  <!-- Dynamic Details -->
+  <div class="details-label">Recipient</div>
+  <div class="details-text" id="name"></div>
 
+  <div class="details-label">Internship Domain</div>
+  <div class="details-text" id="domain"></div>
+
+  <div class="details-label">Duration</div>
+  <div class="details-text"><span id="start"></span> — <span id="end"></span></div>
+
+  <div class="details-label">Certificate ID</div>
+  <div class="details-text" id="cert"></div>
+
+  <hr style="margin:40px 0; border:0; height:2px; background:#e0e6ff;">
+
+  <!-- Main Message -->
+  <div class="description">
+    🎓 <strong>Congratulations!</strong><br><br>
+
+    We are pleased to confirm that <strong><span id="name"></span></strong> has successfully completed the internship program in the domain of <strong><span id="domain"></span></strong> under Knacktech's learning ecosystem and Wipro credential partnership.<br><br>
+
+    During the internship, the candidate demonstrated consistency, a positive learning attitude, and strong participation in practical assignments aligned with real-world industry expectations. Their dedication reflects professional capability and readiness for future opportunities.<br><br>
+
+    This certificate is a recognition of the skills, knowledge, and hands-on experience acquired throughout the internship period from <strong><span id="start"></span></strong> to <strong><span id="end"></span></strong>. It stands as an official credential validating effort, contribution, and learning achievement.<br><br>
+
+    We congratulate the recipient once again and encourage them to continue growing, innovating, and pursuing excellence in their career journey. 🚀
+    <br><br>
+    — Team Knacktech
   </div>
+</div>
 
-  <div class="footer">© 2025 Knacktech • Certificate Verification System</div>
+<div class="footer">© 2025 Knacktech • All Rights Reserved</div>
 
-  <script>
-    const url = new URLSearchParams(window.location.search);
-
-    document.getElementById("name").innerText = url.get("name");
-    document.getElementById("domain").innerText = url.get("domain");
-    document.getElementById("start").innerText = url.get("start");
-    document.getElementById("end").innerText = url.get("end");
-    document.getElementById("cert").innerText = url.get("cert");
-  </script>
+<script>
+const url = new URLSearchParams(window.location.search);
+document.getElementById("name").innerText = url.get("name");
+document.getElementById("domain").innerText = url.get("domain");
+document.getElementById("start").innerText = url.get("start");
+document.getElementById("end").innerText = url.get("end");
+document.getElementById("cert").innerText = url.get("cert");
+</script>
 
 </body>
 </html>
