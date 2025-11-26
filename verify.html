@@ -19,7 +19,7 @@
       min-height: 100vh;
     }
 
-    /* HEADER */
+    /* Full-width Header */
     .header {
       width: 100%;
       background: linear-gradient(135deg, #0038A8, #007bff);
@@ -32,6 +32,7 @@
       box-shadow: 0 4px 18px rgba(0,0,0,0.15);
     }
 
+    /* Wider certificate box */
     .container {
       width: 90%;
       max-width: 900px;
@@ -43,7 +44,6 @@
       box-shadow: 0 8px 35px rgba(0,0,0,0.10);
       animation: fadeIn .4s ease;
       flex-grow: 1;
-      text-align: center;
     }
 
     @keyframes fadeIn {
@@ -51,41 +51,8 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* VERIFIED BADGE */
-    .badge {
-      width: 110px;
-      height: 110px;
-      background: #28a745;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0 auto 20px;
-      color: white;
-      font-size: 50px;
-      animation: popUp .6s ease forwards;
-      transform: scale(0);
-      box-shadow: 0 0 18px rgba(40,167,69,0.7);
-    }
-
-    @keyframes popUp {
-      0% { transform: scale(0.2); opacity: 0; }
-      70% { transform: scale(1.1); opacity: 1; }
-      100% { transform: scale(1); }
-    }
-
-    /* Gentle Glow Animation */
-    .badge-glow {
-      animation: glowPulse 1.8s infinite ease-in-out;
-    }
-
-    @keyframes glowPulse {
-      0% { box-shadow: 0 0 8px rgba(40,167,69,0.6); }
-      50% { box-shadow: 0 0 20px rgba(40,167,69,1); }
-      100% { box-shadow: 0 0 8px rgba(40,167,69,0.6); }
-    }
-
     .title {
+      text-align: center;
       font-size: 24px;
       font-weight: 600;
       color: #0038A8;
@@ -109,6 +76,7 @@
       color: #0038A8;
     }
 
+    /* Footer */
     .footer {
       width: 100%;
       text-align: center;
@@ -128,13 +96,9 @@
   </div>
 
   <div class="container">
-
-    <!-- Animated Verified Badge -->
-    <div class="badge badge-glow">
-      <i class="fa-solid fa-check"></i>
+    <div class="title">
+      <i class="fa-solid fa-circle-check" style="color:#28a745;"></i> Certificate Verified Successfully
     </div>
-
-    <div class="title">Certificate Verified Successfully</div>
 
     <div class="field"><span class="label">Name:</span> <span id="name"></span></div>
     <div class="field"><span class="label">Domain:</span> <span id="domain"></span></div>
@@ -148,6 +112,7 @@
 
   <script>
     const url = new URLSearchParams(window.location.search);
+
     document.getElementById("name").innerText = url.get("name");
     document.getElementById("domain").innerText = url.get("domain");
     document.getElementById("start").innerText = url.get("start");
