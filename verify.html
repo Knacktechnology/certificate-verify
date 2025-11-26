@@ -8,54 +8,59 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
 
-  <!-- FontAwesome Icons -->
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
-      background: #f4f7fb;
+      background: #f4f6fb;
       color: #222;
     }
 
+    /* HEADER */
     .header {
-      background: linear-gradient(135deg, #0038A8, #005DFF);
-      padding: 25px;
-      color: white;
+      background: linear-gradient(135deg, #0038A8, #007bff);
+      padding: 30px 20px;
       text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      color: white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     }
+
     .header img {
       width: 140px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
+
     .header h1 {
       font-size: 26px;
       font-weight: 700;
-      margin: 5px 0 0 0;
+      margin: 0;
     }
 
+    /* CARD */
     .container {
-      max-width: 700px;
+      max-width: 650px;
       margin: 40px auto;
+      background: white;
       padding: 30px;
-      background: #ffffff;
       border-radius: 18px;
-      box-shadow: 0 8px 35px rgba(0,0,0,0.10);
       border-top: 6px solid #005DFF;
-      animation: fadeIn 0.5s ease;
+      box-shadow: 0 8px 35px rgba(0,0,0,0.10);
+      animation: fadeIn .4s ease;
     }
+
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .title {
-      font-size: 24px;
-      font-weight: 700;
-      color: #0038A8;
       text-align: center;
+      color: #0038A8;
+      font-size: 22px;
+      font-weight: 600;
       margin-bottom: 25px;
     }
 
@@ -65,14 +70,15 @@
       border-radius: 12px;
       margin: 14px 0;
       border-left: 4px solid #005DFF;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
       font-size: 16px;
     }
+
     .label {
       font-weight: 600;
       color: #0038A8;
     }
 
+    /* BUTTONS */
     .buttons {
       display: flex;
       justify-content: center;
@@ -80,6 +86,7 @@
       flex-wrap: wrap;
       margin-top: 30px;
     }
+
     button {
       padding: 12px 20px;
       border: none;
@@ -87,16 +94,18 @@
       font-size: 15px;
       font-weight: 600;
       cursor: pointer;
-      transition: 0.25s;
-      width: 45%;
+      width: 46%;
+      transition: .25s;
     }
+
     .download-btn {
       background: #0038A8;
       color: white;
     }
     .download-btn:hover {
-      background: #002F8C;
+      background: #002F7A;
     }
+
     .linkedin-btn {
       background: #0077b5;
       color: white;
@@ -105,33 +114,30 @@
       background: #005f8c;
     }
 
-    @media (max-width: 480px) {
-      button {
-        width: 100%;
-      }
-    }
-
+    /* FOOTER */
     .footer {
+      margin-top: 50px;
       text-align: center;
-      padding: 18px;
-      margin-top: 40px;
       background: #0038A8;
       color: white;
+      padding: 18px;
       font-size: 14px;
     }
   </style>
 </head>
 
 <body>
+
+  <!-- HEADER -->
   <div class="header">
-    <img src="https://raw.githubusercontent.com/Knacktechnology/certificate-verify/main/logo/logo.png" alt="Knacktech Logo" />
+    <img src="logo.png" alt="Knacktech Logo" />
     <h1>Knacktech Certificate Verification Portal</h1>
   </div>
 
+  <!-- CERTIFICATE BOX -->
   <div class="container">
     <div class="title">
-      <i class="fa-solid fa-badge-check"></i>
-      Certificate Verified Successfully
+      <i class="fa-solid fa-circle-check" style="color:#28a745;"></i> Certificate Verified Successfully
     </div>
 
     <div class="field"><span class="label">Name:</span> <span id="name"></span></div>
@@ -141,23 +147,22 @@
     <div class="field"><span class="label">Certificate ID:</span> <span id="cert"></span></div>
 
     <div class="buttons">
-      <button class="download-btn" onclick="downloadPDF()">
-        <i class="fa-solid fa-file-arrow-down"></i> Download PDF
-      </button>
-
-      <button class="linkedin-btn" id="linkedinShare">
-        <i class="fa-brands fa-linkedin"></i> Share on LinkedIn
-      </button>
+      <button class="download-btn" onclick="downloadPDF()"><i class="fa-solid fa-download"></i> Download PDF</button>
+      <button class="linkedin-btn" onclick="shareLinkedIn()"><i class="fa-brands fa-linkedin"></i> Share on LinkedIn</button>
     </div>
   </div>
 
+  <!-- FOOTER -->
   <div class="footer">
-    © 2025 Knacktech • Certificate Verification System
+    © 2025 Knacktech • All Rights Reserved
   </div>
 
+  <!-- PDF Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
   <script>
     const url = new URLSearchParams(window.location.search);
+
     document.getElementById("name").innerText = url.get("name") || "";
     document.getElementById("domain").innerText = url.get("domain") || "";
     document.getElementById("start").innerText = url.get("start") || "";
@@ -165,20 +170,17 @@
     document.getElementById("cert").innerText = url.get("cert") || "";
 
     function downloadPDF(){
-      const element = document.querySelector(".container");
       html2pdf().set({
-        margin: 10,
-        filename: `certificate-${url.get("cert")}.pdf`,
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
-      }).from(element).save();
+        filename:`certificate-${url.get("cert")}.pdf`,
+        html2canvas:{scale:2},
+        jsPDF:{unit:"mm",format:"a4"}
+      }).from(document.querySelector(".container")).save();
     }
 
-    document.getElementById("linkedinShare").onclick = () => {
-      const shareUrl = window.location.href;
-      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`);
-    };
+    function shareLinkedIn(){
+      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`);
+    }
   </script>
+
 </body>
 </html>
-
