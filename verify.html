@@ -1,113 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Knacktech Certificate Verification | Knacktech</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Knacktech Certificate Verification Portal</title>
 
-<!-- GOOGLE FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
 
-<style>
-  body {
-    margin: 0;
-    font-family: "Poppins", sans-serif;
-    background: #eef1f7;
-  }
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-  /* HEADER */
-  header {
-    background: #1a237e;
-    color: white;
-    padding: 18px 30px;
-    text-align: center;
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-  }
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #f4f7fb;
+      color: #222;
+    }
 
-  /* CARD */
-  .container {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-    padding: 20px;
-  }
+    .header {
+      background: linear-gradient(135deg, #0038A8, #005DFF);
+      padding: 25px;
+      color: white;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+    .header img {
+      width: 140px;
+      margin-bottom: 12px;
+    }
+    .header h1 {
+      font-size: 26px;
+      font-weight: 700;
+      margin: 5px 0 0 0;
+    }
 
-  .card {
-    background: white;
-    width: 90%;
-    max-width: 440px;
-    padding: 30px;
-    border-radius: 18px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    animation: fadeIn 0.8s ease;
-  }
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 8px 35px rgba(0,0,0,0.10);
+      border-top: 6px solid #005DFF;
+      animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+    .title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0038A8;
+      text-align: center;
+      margin-bottom: 25px;
+    }
 
-  .card h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #1a237e;
-  }
+    .field {
+      background: #eef4ff;
+      padding: 15px;
+      border-radius: 12px;
+      margin: 14px 0;
+      border-left: 4px solid #005DFF;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+      font-size: 16px;
+    }
+    .label {
+      font-weight: 600;
+      color: #0038A8;
+    }
 
-  .info {
-    font-size: 18px;
-    margin-bottom: 12px;
-  }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.25s;
+      width: 45%;
+    }
+    .download-btn {
+      background: #0038A8;
+      color: white;
+    }
+    .download-btn:hover {
+      background: #002F8C;
+    }
+    .linkedin-btn {
+      background: #0077b5;
+      color: white;
+    }
+    .linkedin-btn:hover {
+      background: #005f8c;
+    }
 
-  .label {
-    font-weight: 600;
-    color: #333;
-  }
+    @media (max-width: 480px) {
+      button {
+        width: 100%;
+      }
+    }
 
-  /* FOOTER */
-  footer {
-    text-align: center;
-    padding: 20px;
-    background: #1a237e;
-    color: white;
-    font-size: 14px;
-    margin-top: 50px;
-  }
-
-</style>
+    .footer {
+      text-align: center;
+      padding: 18px;
+      margin-top: 40px;
+      background: #0038A8;
+      color: white;
+      font-size: 14px;
+    }
+  </style>
 </head>
+
 <body>
-
-<header>
-  Knacktech Certificate Verification Portal
-</header>
-
-<div class="container">
-  <div class="card">
-    <h2>Certificate Details</h2>
-
-    <p class="info"><span class="label">Name:</span> <span id="name"></span></p>
-    <p class="info"><span class="label">Domain:</span> <span id="domain"></span></p>
-    <p class="info"><span class="label">Start Date:</span> <span id="start"></span></p>
-    <p class="info"><span class="label">End Date:</span> <span id="end"></span></p>
-    <p class="info"><span class="label">Certificate ID:</span> <span id="cert"></span></p>
+  <div class="header">
+    <img src="https://raw.githubusercontent.com/Knacktechnology/certificate-verify/main/logo/logo.png" alt="Knacktech Logo" />
+    <h1>Knacktech Certificate Verification Portal</h1>
   </div>
-</div>
 
-<footer>
-  © 2025 Knacktech — Learning Meets Innovation
-</footer>
+  <div class="container">
+    <div class="title">
+      <i class="fa-solid fa-badge-check"></i>
+      Certificate Verified Successfully
+    </div>
 
-<script>
-  const url = new URLSearchParams(window.location.search);
-  document.getElementById("name").innerText = url.get("name") ?? "N/A";
-  document.getElementById("domain").innerText = url.get("domain") ?? "N/A";
-  document.getElementById("start").innerText = url.get("start") ?? "N/A";
-  document.getElementById("end").innerText = url.get("end") ?? "N/A";
-  document.getElementById("cert").innerText = url.get("cert") ?? "N/A";
-</script>
+    <div class="field"><span class="label">Name:</span> <span id="name"></span></div>
+    <div class="field"><span class="label">Domain:</span> <span id="domain"></span></div>
+    <div class="field"><span class="label">Start Date:</span> <span id="start"></span></div>
+    <div class="field"><span class="label">End Date:</span> <span id="end"></span></div>
+    <div class="field"><span class="label">Certificate ID:</span> <span id="cert"></span></div>
 
+    <div class="buttons">
+      <button class="download-btn" onclick="downloadPDF()">
+        <i class="fa-solid fa-file-arrow-down"></i> Download PDF
+      </button>
+
+      <button class="linkedin-btn" id="linkedinShare">
+        <i class="fa-brands fa-linkedin"></i> Share on LinkedIn
+      </button>
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2025 Knacktech • Certificate Verification System
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    const url = new URLSearchParams(window.location.search);
+    document.getElementById("name").innerText = url.get("name") || "";
+    document.getElementById("domain").innerText = url.get("domain") || "";
+    document.getElementById("start").innerText = url.get("start") || "";
+    document.getElementById("end").innerText = url.get("end") || "";
+    document.getElementById("cert").innerText = url.get("cert") || "";
+
+    function downloadPDF(){
+      const element = document.querySelector(".container");
+      html2pdf().set({
+        margin: 10,
+        filename: `certificate-${url.get("cert")}.pdf`,
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+      }).from(element).save();
+    }
+
+    document.getElementById("linkedinShare").onclick = () => {
+      const shareUrl = window.location.href;
+      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`);
+    };
+  </script>
 </body>
 </html>
