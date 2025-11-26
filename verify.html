@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Knacktech Certificate Verification | Knacktech</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #eef1f7;
+  }
+
+  /* HEADER */
+  header {
+    background: #1a237e;
+    color: white;
+    padding: 18px 30px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  }
+
+  /* CARD */
+  .container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    padding: 20px;
+  }
+
+  .card {
+    background: white;
+    width: 90%;
+    max-width: 440px;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    animation: fadeIn 0.8s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1a237e;
+  }
+
+  .info {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .label {
+    font-weight: 600;
+    color: #333;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: #1a237e;
+    color: white;
+    font-size: 14px;
+    margin-top: 50px;
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  Knacktech Certificate Verification Portal
+</header>
+
+<div class="container">
+  <div class="card">
+    <h2>Certificate Details</h2>
+
+    <p class="info"><span class="label">Name:</span> <span id="name"></span></p>
+    <p class="info"><span class="label">Domain:</span> <span id="domain"></span></p>
+    <p class="info"><span class="label">Start Date:</span> <span id="start"></span></p>
+    <p class="info"><span class="label">End Date:</span> <span id="end"></span></p>
+    <p class="info"><span class="label">Certificate ID:</span> <span id="cert"></span></p>
+  </div>
+</div>
+
+<footer>
+  © 2025 Knacktech — Learning Meets Innovation
+</footer>
+
+<script>
+  const url = new URLSearchParams(window.location.search);
+  document.getElementById("name").innerText = url.get("name") ?? "N/A";
+  document.getElementById("domain").innerText = url.get("domain") ?? "N/A";
+  document.getElementById("start").innerText = url.get("start") ?? "N/A";
+  document.getElementById("end").innerText = url.get("end") ?? "N/A";
+  document.getElementById("cert").innerText = url.get("cert") ?? "N/A";
+</script>
+
+</body>
+</html>
