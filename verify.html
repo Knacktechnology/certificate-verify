@@ -1,4 +1,5 @@
 <!-- force deploy -->
+<!-- force deploy -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,25 +15,34 @@
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #e4ecff, #f9fbff);
+  background: #f5f7ff;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  animation: fadebg 1s ease;
 }
-@keyframes fadebg { from {opacity: 0;} to {opacity: 1;} }
 
-/* HEADER */
-.header {
-  background: linear-gradient(120deg, #0038A8, #0066ff, #009dff);
-  padding: 25px;
-  text-align: center;
-  color: white;
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  box-shadow: 0 4px 25px rgba(0,0,0,0.2);
+/* HEADER (Minimal) */
+.navbar {
+  width: 100%;
+  background: #ffffff;
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 2px solid #e6ecff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar img {
+  height: 45px;
+}
+
+.navbar-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0038A8;
 }
 
 /* CARD */
@@ -40,16 +50,14 @@ body {
   width: 92%;
   max-width: 900px;
   background: #fff;
-  margin: 40px auto;
-  padding: 45px;
+  margin: 20px auto;
+  padding: 25px 45px 45px;
   border-radius: 18px;
   position: relative;
   box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-  animation: slideUp .7s ease;
 }
-@keyframes slideUp { from {transform: translateY(20px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
 
-/* BORDER GLOW */
+/* BORDER GLOW EFFECT */
 .card:before {
   content: "";
   position: absolute;
@@ -63,34 +71,24 @@ body {
   mask-composite: exclude;
 }
 
-/* VERIFIED BADGE */
+/* BADGE */
 .badge {
-  width: 110px;
-  height: 110px;
+  width: 90px;
+  height: 90px;
   background: #28a745;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: -20px auto 20px;
+  margin: 0 auto 15px;
   color: white;
-  font-size: 50px;
+  font-size: 42px;
   animation: pop .6s ease forwards;
-  transform: scale(0);
 }
 @keyframes pop {
   0% { transform: scale(0.3) rotate(-20deg); opacity: 0; }
   60% { transform: scale(1.15) rotate(8deg); opacity: 1; }
   100% { transform: scale(1) rotate(0deg); }
-}
-
-.badge-glow {
-  animation: glowPulse 2s infinite ease-in-out;
-}
-@keyframes glowPulse {
-  0% { box-shadow: 0 0 8px rgba(40,167,69,0.6); }
-  50% { box-shadow: 0 0 22px rgba(40,167,69,1); }
-  100% { box-shadow: 0 0 8px rgba(40,167,69,0.6); }
 }
 
 /* TITLES */
@@ -104,7 +102,7 @@ body {
 .subtitle {
   text-align: center;
   font-size: 17px;
-  color: #33aa55;
+  color: #28a745;
   font-weight: 500;
   margin-bottom: 28px;
 }
@@ -122,34 +120,66 @@ body {
 }
 .item .label { font-weight: 600; color: #0038A8; }
 
-/* MESSAGE */
+/* MESSAGE CONTENT */
 .message {
-  margin-top: 30px;
+  margin-top: 20px;
   text-align: left;
   font-size: 17px;
   line-height: 29px;
-  animation: fadeIn 1.3s ease;
 }
-@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
 
-/* FOOTER */
+/* FOOTER STYLE 3 */
 .footer {
-  text-align: center;
-  background: #0038A8;
+  background: #0b0f1e;
   color: white;
-  padding: 18px;
+  text-align: center;
+  padding: 30px 20px;
   margin-top: auto;
+}
+.footer-content {
+  max-width: 900px;
+  margin: auto;
+}
+.footer .links {
+  margin: 10px 0;
+}
+.footer .links a {
+  padding: 0 10px;
+  color: #8fb5ff;
+  text-decoration: none;
+  font-size: 15px;
+}
+.footer .social i {
+  margin: 10px 8px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: .3s;
+}
+.footer .social i:hover {
+  transform: scale(1.2);
+  color: #3ea6ff;
+}
+.footer small {
+  display: block;
+  margin-top: 10px;
+  opacity: 0.6;
+  font-size: 14px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">Knacktech Certificate Verification</div>
+<!-- HEADER -->
+<div class="navbar">
+  <img src="https://knacktechnology.github.io/certificate-verify/logo.png" alt="Knacktech Logo">
+  <div class="navbar-title">Knacktech Certificate Verification</div>
+</div>
 
+<!-- MAIN CARD -->
 <div class="card">
 
-  <div class="badge badge-glow">
+  <div class="badge">
     <i class="fa-solid fa-check"></i>
   </div>
 
@@ -169,20 +199,34 @@ body {
     <strong><span class="name"></span></strong> has successfully completed the internship in 
     <strong><span class="domain"></span></strong> under the Knacktech Internship Program, delivered with real-world industry training standards.
     <br><br>
-    This credential confirms the individual's learning effort, hands-on experience, dedication, and successful completion of evaluated tasks during the period 
+    This credential confirms dedication, hands-on experience, and official internship completion from 
     <span class="start"></span> to <span class="end"></span>.
-    <br><br>
-    This verification remains valid for academic and professional review. Employers and institutions may use this page as an official proof of internship completion.
-    <br><br>
-    🚀 Wishing you continued growth and success in your career journey!
   </div>
 </div>
 
-<div class="footer">© 2025 Knacktech Credential Registry</div>
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-content">
+    <div class="social">
+      <i class="fa-brands fa-linkedin"></i>
+      <i class="fa-brands fa-instagram"></i>
+      <i class="fa-brands fa-github"></i>
+      <i class="fa-brands fa-youtube"></i>
+    </div>
+    <div class="links">
+      <a href="#">Home</a>
+      <a href="#">Programs</a>
+      <a href="#">Support</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms</a>
+    </div>
+    <small>© <span id="year"></span> Knacktech. All rights reserved.</small>
+  </div>
+</div>
 
 <script>
+/* Fill Dynamic Certificate Data */
 const url = new URLSearchParams(window.location.search);
-
 const mappings = {
   name: url.get("name"),
   domain: url.get("domain"),
@@ -190,12 +234,12 @@ const mappings = {
   end: url.get("end"),
   cert: url.get("cert")
 };
-
 Object.keys(mappings).forEach(key => {
-  document.querySelectorAll(`.${key}`).forEach(el => {
-    el.innerText = mappings[key] || "";
-  });
+  document.querySelectorAll(`.${key}`).forEach(el => el.innerText = mappings[key] || "");
 });
+
+/* Auto Year in Footer */
+document.getElementById("year").innerText = new Date().getFullYear();
 </script>
 
 </body>
